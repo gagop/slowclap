@@ -5,8 +5,23 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AssemblyName>Gago.$(MSBuildProjectName)</AssemblyName>
-        <PackageId>$(AssemblyName)</PackageId>
+        <PackageId>Gago.$(AssemblyName)</PackageId>
         <RootNamespace>Gago.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+        <Title>SlowClap</Title>
+        <Description>The SlowClap A/B library is a small library designed to make implementing A/B tests in C# applications easier. It can also be used to gradually introduce new features into the application in order to detect any problems as soon as possible.</Description>
+        <Copyright>Piotr Gago</Copyright>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <RepositoryUrl>https://github.com/gagop/slowclap</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageTags>testing;ab tests;a/b tests; </PackageTags>
     </PropertyGroup>
+
+    <ItemGroup>
+      <None Include="..\README.md">
+        <Pack>True</Pack>
+        <PackagePath>\</PackagePath>
+      </None>
+    </ItemGroup>
 
 </Project>

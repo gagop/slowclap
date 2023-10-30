@@ -21,20 +21,16 @@ var experiment = new Experiment("ButtonColorTest")
 // All the variants should sum up to 100%.
 // Based on this setting, we can control the probability of each variant occurring in the calculations.
 
-// Initialize the A/B tester
-var abTester = new AbTester();
-
 // Perform random assignment
-var randomVariant = abTester.ChooseRandomVariant(experiment);
+var randomVariant = experiment.ChooseRandomVariant();
 
 // Or perform consistent assignment based on user ID (or other information stable for the user)
 var userId = "user123";
-var consistentVariant = abTester.ChooseConsistentVariant(experiment, userId);
-
+var consistentVariant = experiment.ChooseConsistentVariant(userId);
 ```
 
 # Future ideas
 
-- Lifecycle managment - Implement features for dynamically starting, pausing, and stopping experiments, allowing for more flexible experiment management.
+- Lifecycle management - Implement features for dynamically starting, pausing, and stopping experiments, allowing for more flexible experiment management.
 - Targeting and segmentation - Within experiments, investigate features for segmenting user groups and targeting specific demographics or user attributes.
 - Statistical Analysis (Advanced) - Improve statistical analysis capabilities to provide deeper insights into experiment results.
