@@ -161,5 +161,45 @@ public class ExperimentUnitTests
         // Assert
         Assert.False(result);
     }
-    
+
+
+    [Fact]
+    public void ChooseRandomVariant_ValidExperimentWithTwoVariants_ReturnsVariant()
+    {
+        // Arrange
+        var experiment = new Experiment("TestExperiment", new Variant("Variant1", 50), new Variant("Variant2", 50));
+
+        // Act
+        var chosenVariant = experiment.ChooseRandomVariant();
+
+        // Assert
+        Assert.Contains(chosenVariant, experiment.Variants);
+    }
+
+    [Fact]
+    public void ChooseRandomVariant_ValidExperimentWithThreeVariants_ReturnsVariant()
+    {
+        // Arrange
+        var experiment = new Experiment("TestExperiment", new Variant("Variant1", 25), new Variant("Variant2", 25), new Variant("Variant2", 50));
+
+        // Act
+        var chosenVariant = experiment.ChooseRandomVariant();
+
+        // Assert
+        Assert.Contains(chosenVariant, experiment.Variants);
+    }
+
+    [Fact]
+    public void ChooseConsistentVariant_ValidExperimentWithTwoVariants_ReturnsVariant()
+    {
+        // Arrange
+        var experiment = new Experiment("TestExperiment", new Variant("Variant1", 50), new Variant("Variant2", 50));
+
+        // Act
+        var chosenVariant = experiment.ChooseConsistentVariant("abc123");
+
+        // Assert
+        Assert.Contains(chosenVariant, experiment.Variants);
+    }
+
 }
