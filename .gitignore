@@ -396,3 +396,8 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Custom rules
+.idea/
+*.sln.DotSettings
+*.sln.DotSettings.user

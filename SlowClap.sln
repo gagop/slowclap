@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlowClap", "SlowClap\SlowClap.csproj", "{5322CAE6-E013-4C60-A660-5DC49737AD25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlowClap.Tests", "SlowClap.Tests\SlowClap.Tests.csproj", "{E9380067-2633-42E0-9385-E8D10D2A7DB6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5322CAE6-E013-4C60-A660-5DC49737AD25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5322CAE6-E013-4C60-A660-5DC49737AD25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5322CAE6-E013-4C60-A660-5DC49737AD25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5322CAE6-E013-4C60-A660-5DC49737AD25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9380067-2633-42E0-9385-E8D10D2A7DB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9380067-2633-42E0-9385-E8D10D2A7DB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9380067-2633-42E0-9385-E8D10D2A7DB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9380067-2633-42E0-9385-E8D10D2A7DB6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
