@@ -1,10 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <AssemblyName>Gago.$(MSBuildProjectName)</AssemblyName>
+		<AssemblyVersion>1.1.0</AssemblyVersion>
+		<FileVersion>$(AssemblyVersion)</FileVersion>
+		<Version>$(AssemblyVersion)</Version>
+		<AssemblyName>Gago.$(MSBuildProjectName)</AssemblyName>
         <PackageId>$(AssemblyName)</PackageId>
         <RootNamespace>Gago.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
         <Title>SlowClap</Title>

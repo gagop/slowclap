@@ -202,4 +202,49 @@ public class ExperimentUnitTests
         Assert.Contains(chosenVariant, experiment.Variants);
     }
 
+    
+    [Fact]
+    public void GetRandomInt_ReturnsValueWithinRange()
+    {
+        for (int i = 0; i < 1000; i++)
+        {
+            int result = Experiment.GetRandomInt();
+            Assert.True(result >= 0 && result <= 100, $"Out of range value: {result}");
+        }
+    }
+
+    [Fact]
+    public void GetRandomInt_ThreadSafetyTest()
+    {
+        int tasksCount = 100;
+        Task[] tasks = new Task[tasksCount];
+
+        for (int i = 0; i < tasksCount; i++)
+        {
+            tasks[i] = Task.Run(() =>
+            {
+                for (int j = 0; j < 100; j++)
+                {
+                    Experiment.GetRandomInt();
+                }
+            });
+        }
+
+        Task.WhenAll(tasks).Wait();
+        // No exceptions mean it's thread-safe under the given test conditions
+    }
+
+    [Fact]
+    public void GetRandomInt_GeneratesDifferentValues()
+    {
+        int firstValue = Experiment.GetRandomInt();
+        int differentValuesCount = 0;
+
+        for (int i = 0; i < 100; i++)
+        {
+            if (Experiment.GetRandomInt() != firstValue) differentValuesCount++;
+        }
+
+        Assert.True(differentValuesCount > 0, "Generated values are too similar");
+    }
 }
