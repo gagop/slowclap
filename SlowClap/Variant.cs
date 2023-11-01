@@ -55,5 +55,16 @@ public class Variant
         Name = name;
         Weight = weight;
     }
-    
+
+    public override bool Equals(object? obj)
+    {
+        return obj is Variant variant &&
+               Name == variant.Name &&
+               Weight == variant.Weight;
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(Name, Weight);
+    }
 }
