@@ -1,13 +1,13 @@
 # slowclap
 
-The SlowClap A/B library is a small library designed to make implementing A/B tests in C# applications easier. It can also be used to gradually introduce new features into the application in order to detect any problems as soon as possible.
+The SlowClap A/B library is a small library designed to make implementing A/B tests in C# applications easier. It can also be used to gradually introduce new features into the application in order to detect any problems as soon as possible. Library is thread-safe.
 
 # Installation
 
 To get started with SlowClap, install the NuGet package using the following command:
 
 ```
-dotnet add package SlowClap
+dotnet add package Gago.SlowClap
 ```
 
 # Example usage

@@ -6,8 +6,31 @@ namespace SlowClap;
 /// </summary>
 public class Experiment
 {
-    private readonly Random _random = new();
+    private static readonly Random _globalRandom = new();
 
+    [ThreadStatic]
+    private static Random _localRandom;
+
+    /// <summary>
+    /// Returns a random integer between 0 and 100 (inclusive).
+    /// Utilizes thread-local random instances to ensure thread safety
+    /// and reduce contention when accessed concurrently.
+    /// If a thread-local random instance doesn't exist, a seed is acquired
+    /// from a global random instance to initialize it.
+    /// https://devblogs.microsoft.com/pfxteam/getting-random-numbers-in-a-thread-safe-way/
+    /// </summary>
+    public static int GetRandomInt()
+    {
+        Random instance = _localRandom;
+        if (instance == null)
+        {
+            int seed;
+            lock (_globalRandom) seed = _globalRandom.Next();
+            _localRandom = instance = new Random(seed);
+        }
+        return instance.Next(101);
+    }
+    
     private string _name;
 
     /// <summary>
@@ -140,7 +163,7 @@ public class Experiment
             throw new InvalidOperationException("Invalid experiment configuration. Make sure that you have at least 1 variant and all the variants can be summed up to 100.");
         }
 
-        int roll = (int)(_random.NextDouble() * 101);
+        int roll = GetRandomInt();
         int sum = 0;
 
         foreach (var variant in Variants)
