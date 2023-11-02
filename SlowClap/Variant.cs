@@ -28,7 +28,7 @@ public class Variant
     private int _weight;
 
     /// <summary>
-    /// Gets or sets the weight of the variant. Must be between 0 and 100.
+    /// Gets or sets the weight of the variant. Must be between a positive integer.
     /// </summary>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when attempting to set a weight outside the valid range [0, 100].</exception>
     public int Weight
@@ -36,9 +36,9 @@ public class Variant
         get => _weight;
         set
         {
-            if (value < 0 || value > 100)
+            if (value < 0)
             {
-                throw new ArgumentOutOfRangeException(nameof(value), "Weight must be between 0 and 100");
+                throw new ArgumentOutOfRangeException(nameof(value), "Weight must be positive");
             }
 
             _weight = value;

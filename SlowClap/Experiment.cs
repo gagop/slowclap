@@ -12,7 +12,7 @@ public class Experiment
     private static Random _localRandom;
 
     /// <summary>
-    /// Returns a random integer between 0 and 100 (inclusive).
+    /// Returns a random integer.
     /// Utilizes thread-local random instances to ensure thread safety
     /// and reduce contention when accessed concurrently.
     /// If a thread-local random instance doesn't exist, a seed is acquired
@@ -28,7 +28,7 @@ public class Experiment
             lock (_globalRandom) seed = _globalRandom.Next();
             _localRandom = instance = new Random(seed);
         }
-        return instance.Next(101);
+        return instance.Next();
     }
     
     private string _name;
@@ -147,7 +147,7 @@ public class Experiment
     /// <returns>True if the experiment is valid, false otherwise.</returns>
     public bool CheckIfExperimentIsValid()
     {
-        return Variants.Count>=1 && Variants.Sum(v => v.Weight) == 100;
+        return Variants.Count>=1;
     }
 
     /// <summary>
@@ -163,13 +163,16 @@ public class Experiment
             throw new InvalidOperationException("Invalid experiment configuration. Make sure that you have at least 1 variant and all the variants can be summed up to 100.");
         }
 
+        int totalWeight = Variants.Sum(v => v.Weight);
         int roll = GetRandomInt();
+        int normalizedRoll = roll % totalWeight;
+        
         int sum = 0;
-
+        
         foreach (var variant in Variants)
         {
             sum += variant.Weight;
-            if (roll <= sum)
+            if (normalizedRoll <= sum)
             {
                 return variant;
             }
@@ -199,7 +202,8 @@ public class Experiment
         }
 
         int hash = Math.Abs(userId.GetHashCode());
-        int hashNormalized = hash % 101; // This will give a value in the range [0, 100]
+        int totalWeight = Variants.Sum(v => v.Weight);
+        int hashNormalized = hash % totalWeight;
 
         int sum = 0;
         foreach (var variant in Variants)
