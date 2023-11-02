@@ -18,7 +18,7 @@ var experiment = new Experiment("ButtonColorTest")
     .AddVariant("RedButton", 50)
     .AddVariant("BlueButton", 50);
 
-// The first argument is the name of the variant, and the second represents the weight.
+// The first argument is the name of the variant, and the second represents the weight (positive integer).
 // Based on this setting, we can control the probability of each variant occurring in the calculations.
 
 // Perform random assignment
