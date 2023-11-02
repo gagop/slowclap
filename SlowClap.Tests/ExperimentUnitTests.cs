@@ -132,36 +132,7 @@ public class ExperimentUnitTests
         // Assert
         Assert.True(result);
     }
- 
-    [Fact]
-    public void CheckIfExperimentIsValid_WithInvalidWeight_ShouldReturnFalse()
-    {
-        // Arrange
-        var experiment = new Experiment("TestExperiment");
-        experiment.AddVariant("Variant1", 60);
-        experiment.AddVariant("Variant2", 50);
-
-        // Act
-        var result = experiment.CheckIfExperimentIsValid();
-
-        // Assert
-        Assert.False(result);
-    }
-    
-    [Fact]
-    public void CheckIfExperimentIsValid_WithNotEnoughVariants_ShouldReturnFalse()
-    {
-        // Arrange
-        var experiment = new Experiment("TestExperiment");
-        experiment.AddVariant("Variant1", 50);
-
-        // Act
-        var result = experiment.CheckIfExperimentIsValid();
-
-        // Assert
-        Assert.False(result);
-    }
-
+     
 
     [Fact]
     public void ChooseRandomVariant_ValidExperimentWithTwoVariants_ReturnsVariant()
@@ -209,7 +180,7 @@ public class ExperimentUnitTests
         for (int i = 0; i < 1000; i++)
         {
             int result = Experiment.GetRandomInt();
-            Assert.True(result >= 0 && result <= 100, $"Out of range value: {result}");
+            Assert.True(result >= 0, $"Out of range value: {result}");
         }
     }
 

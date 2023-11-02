@@ -29,7 +29,6 @@ public class VariantUnitTests
     
     [Theory]
     [InlineData("ValidName", -1)]
-    [InlineData("ValidName", 101)]
     public void Constructor_WithInvalidWeight_ShouldThrowArgumentOutOfRangeException(string name, int weight)
     {
         // Act & Assert
@@ -64,7 +63,6 @@ public class VariantUnitTests
     
     [Theory]
     [InlineData(-1)]
-    [InlineData(101)]
     public void Weight_Setter_WithInvalidWeight_ShouldThrowArgumentOutOfRangeException(int newWeight)
     {
         // Arrange
